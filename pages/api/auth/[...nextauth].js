@@ -5,11 +5,15 @@ export const authOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: process.env.NEXT_GOOGLE_ID,
+      clientSecret: process.env.NEXT_GOOGLE_SECRET,
     }),
     // ...add more providers here
   ],
+
+  pages: {
+    signin: '/auth/signin',
+  },
 };
 
 export default NextAuth(authOptions);
