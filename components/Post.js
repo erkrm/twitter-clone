@@ -17,7 +17,7 @@ export default function Post({ post }) {
 
       {/** RIGHT SIDE */}
 
-      <div className="">
+      <div className="flex-1">
         {/** HEADER */}
 
         <div className="flex items-center justify-between">
@@ -37,7 +37,7 @@ export default function Post({ post }) {
         </div>
 
         {/** POST TEXT */}
-        <p className="text-gray-800 tex-[15px] sm:text-[16px] mb-2">
+        <p className="text-gray-800 tex-[15px sm:text-[16px] mb-2">
           {post.text}
         </p>
 
@@ -45,13 +45,15 @@ export default function Post({ post }) {
         <img className="rounded-2xl mr-2" src={post.img} alt="post image" />
 
         <div className="flex justify-between text-gray-500 p-2">
-          {/** ICONS */}
+          <div className="flex items-center select-none">
+            {/** ICONS */}
 
-          <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
-          <TrashIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
-          <HeartIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
-          <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
-          <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+            <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+            <TrashIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
+            <HeartIcon className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100" />
+            <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+            <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+          </div>
         </div>
       </div>
     </div>
