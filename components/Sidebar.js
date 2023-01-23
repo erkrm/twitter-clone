@@ -66,7 +66,7 @@ export default function Sidebar() {
             />
             <div className="leading-5 hidden xl:inline">
               <h4 className="font-bold">{session.user.name}</h4>
-              <p className="text-gray-500">@{session.user.username}</p>
+              <p className="text-gray-500">@{session.user.name}</p>
             </div>
             <DotsHorizontalIcon className="h-5 xl:ml-8 hidden xl:inline" />
           </div>
