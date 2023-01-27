@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRecoilState } from 'recoil';
 import { modalState, postIdState } from '../atom/modalAtom';
+import { useRouter } from 'next/router';
 import Modal from 'react-modal';
 import {
   EmojiHappyIcon,
@@ -9,7 +10,13 @@ import {
 } from '@heroicons/react/outline';
 import { db } from '@/firebase';
 import { useEffect, useState } from 'react';
-import { doc, onSnapshot } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  onSnapshot,
+  serverTimestamp,
+} from 'firebase/firestore';
 import Moment from 'react-moment';
 import { useSession } from 'next-auth/react';
 
@@ -19,6 +26,7 @@ export default function CommentModal() {
   const [post, setPost] = useState({});
   const { data: session } = useSession();
   const [input, setInput] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     onSnapshot(doc(db, 'posts', postId), (snapshot) => {
@@ -26,7 +34,18 @@ export default function CommentModal() {
     });
   }, [postId]);
 
-  function sendComment() {}
+  async function sendComment() {
+    await addDoc(collection(db, 'posts', postId, 'comments'), {
+      comment: input,
+      name: session.user.name,
+      userImg: session.user.image,
+      timestamp: serverTimestamp(),
+    });
+
+    setOpen(false);
+    setInput('');
+    router.push(`post/${postId}`);
+  }
 
   return (
     <div>
