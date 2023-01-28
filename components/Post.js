@@ -47,9 +47,9 @@ export default function Post({ post, id }) {
 
   useEffect(() => {
     setHasLikes(
-      likes.findIndex((likes) => likes.id === session?.user.uid) !== -1
+      likes.findIndex((like) => like.id === session?.user.uid) !== -1
     );
-  }, [likes, session?.user.uid]);
+  }, [likes]);
 
   async function likePost() {
     if (session) {
@@ -108,12 +108,16 @@ export default function Post({ post, id }) {
         </div>
 
         {/** POST TEXT */}
-        <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">
+        <p
+          onClick={() => router.push(`/posts/${id}`)}
+          className="text-gray-800 text-[15px] sm:text-[16px] mb-2"
+        >
           {post?.data()?.text}
         </p>
 
         {/** POST IMAGE */}
         <img
+          onClick={() => router.push(`/posts/${id}`)}
           className="rounded-2xl mr-2"
           src={post?.data()?.image}
           alt="post image"

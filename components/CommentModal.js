@@ -40,6 +40,7 @@ export default function CommentModal() {
       name: session.user.name,
       userImg: session.user.image,
       timestamp: serverTimestamp(),
+      userId: session.user.uid,
     });
 
     setOpen(false);
